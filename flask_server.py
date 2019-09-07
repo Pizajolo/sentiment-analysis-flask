@@ -6,12 +6,12 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 #---------------------------------------------------------------------------
 
-consumer_key = ''
-consumer_secret = ''
-
-access_token = ''
-access_token_secret = ''
-
+keys_file = open("keys.txt")
+lines = keys_file.readlines()
+consumer_key = lines[0].rstrip()
+consumer_secret = lines[1].rstrip()
+access_token = lines[2].rstrip()
+access_token_secret = lines[3].rstrip()
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 
@@ -35,9 +35,9 @@ def search():
     analyzer = SentimentIntensityAnalyzer()
     for tweet in tweets:
         vs = analyzer.polarity_scores(tweet.full_text)
-        if vs['compound'] > 0.5:
+        if vs['compound'] >= 0.05:
             sentiment = 1
-        elif vs['compound'] < -0.5:
+        elif vs['compound'] <= -0.05:
             sentiment = -1
         else:
             sentiment = 0
