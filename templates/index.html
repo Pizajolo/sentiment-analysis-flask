@@ -1,11 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sentiment-analyses</title>
-</head>
-<body>
-    <h3>What tweets you want to see!</h3>
+<html>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Sentiment-analyses</title>
+    <meta name="description" content="Sentiment analysing tool to see the feeling if the Twitter comunity about a product">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+</head>
+
+<body style="background-color: #3733f2;">
+    <section class="d-flex flex-column" style="width: 100%;height: 100vh;background-color: #3733f2;">
+        <section class="d-flex justify-content-between align-items-center" style="height: 50px;background-color: #0b1076;"><i class="fa fa-github" style="margin: 10px;font-size: 30px;"></i><button class="btn btn-primary" type="button" style="width: 70px;height: 40px;margin-left: 10px;background-color: rgba(78,115,223,0);margin-right: 10px;font-family: Montserrat, sans-serif;">Login</button></section>
+        <section
+            class="d-flex flex-column justify-content-center align-items-center" style="width: 100%;height: 200px;">
+            <h1 class="text-center" style="font-family: Montserrat, sans-serif;font-size: 50px;font-weight: bold;font-style: normal;color: rgb(236,237,242);">Pizajolo Sentiment</h1>
+            <h1 style="font-size: 25px;background-color: #0b1076;padding: 5px;color: rgb(200,201,210);">know what the internet thinks</h1>
+    </section>
+    <section class="d-flex flex-column justify-content-center align-items-center" style="width: 100%;height: 300px;">
+        <form class="search-form" style="width: 500px;margin-bottom: 10px;max-width: 99%;margin-top: 10px;">
+            <div class="input-group">
+                <div class="input-group-prepend"><span class="input-group-text" style="font-family: sans-serif;"><i class="fa fa-search"></i></span></div><input class="form-control" type="text" placeholder="Key word to analyse" style="font-family: Montserrat, sans-serif;">
+                <div class="input-group-append"><button class="btn btn-light" type="button" style="font-family: Montserrat, sans-serif;">Search </button></div>
+            </div>
+        </form>
+        <div class="chart-area" style="height: 200px;font-family: sans-serif;"><canvas data-bs-chart="{&quot;type&quot;:&quot;doughnut&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Positiv&quot;,&quot;Negativ&quot;,&quot;Neutral&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;&quot;,&quot;backgroundColor&quot;:[&quot;#0b851f&quot;,&quot;#a6141d&quot;,&quot;#676a6a&quot;],&quot;borderColor&quot;:[&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;],&quot;data&quot;:[&quot;50&quot;,&quot;30&quot;,&quot;15&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false},&quot;title&quot;:{&quot;fontFamily&quot;:&quot;Montserrat, sans-serif&quot;,&quot;text&quot;:&quot;Overview&quot;,&quot;position&quot;:&quot;top&quot;,&quot;display&quot;:true,&quot;fontColor&quot;:&quot;rgb(236,237,242)&quot;,&quot;fontSize&quot;:&quot;15&quot;}}}"></canvas></div>
+    </section>
+    <section class="d-flex justify-content-center" style="font-family: Montserrat, sans-serif;">
+        <div class="table-responsive" style="max-width: 90%;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 60%;">Tweet</th>
+                        <th>Postive</th>
+                        <th>Neutral</th>
+                        <th>Negative</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Hello Its porsc</td>
+                        <td>Cell 2</td>
+                        <td>Cell 2</td>
+                        <td>Cell 2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/script.min.js"></script>
 </body>
+
 </html>
