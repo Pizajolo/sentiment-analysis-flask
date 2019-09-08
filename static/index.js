@@ -33,7 +33,7 @@ let chart = new Chart(ctx, {
         responsive: true,
     }
 });
-
+// functions to add cells and rows to table
 function addCell(tr, val) {
     var td = document.createElement('td');
     td.innerHTML = val;
@@ -53,7 +53,7 @@ function addRow(tbl, val_1, val_2, val_3, val_4) {
 
 
 async function app() {
-    console.log('Hello');
+    console.log('Hello Welcome to the Pizajolo Sentiment Website');
     document.querySelector('#form').onsubmit = () => {
 
         // Initialize new request
@@ -72,6 +72,7 @@ async function app() {
                 table.deleteRow(i - 1);
             }
             if (data.success) {
+                // setting the numbers to display in DoughnutChart
                 let neg = 0;
                 let posi = 0;
                 let neu = 0;
@@ -87,6 +88,7 @@ async function app() {
                         neu = neu + 1;
                     }
                 }
+                // Display Chart
                 let data_chart = [posi, neg, neu];
                 chart.canvas.parentNode.style.height = '200px';
                 ctx.height = 200;

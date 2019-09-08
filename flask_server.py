@@ -7,6 +7,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 
 #---------------------------------------------------------------------------
+# Load Keys and tokens from Textfile
 
 keys_file = open("keys.txt")
 lines = keys_file.readlines()
@@ -24,18 +25,20 @@ api = tweepy.API(auth)
 
 app = Flask(__name__)
 
-
+# Home of the page
 @app.route("/")
 def index():
     return render_template('index.html')
 
-
+# Search the wanted value either in news descriptions or tweets or both
 @app.route("/search",methods=["POST"])
 def search():
     analyzer = SentimentIntensityAnalyzer()
     t = []
     search_tweet = request.form.get("search_query")
     source = request.form.get("type")
+
+    # searching in twitter tweets and evaluating it
     if source == 'twitter' or source == 'all':
         tweets = api.search(search_tweet, tweet_mode='extended')
         for tweet in tweets:
@@ -47,6 +50,8 @@ def search():
             else:
                 sentiment = 0
             t.append([tweet.full_text, vs['pos'], vs['neu'], vs['neg'], sentiment])
+
+    # searching in news descriptions and evaluating it but just sends back the title
     if source == 'news' or source == 'all':
         date_object = datetime.date.today()
         url = ('https://newsapi.org/v2/everything?'
@@ -66,7 +71,8 @@ def search():
                 else:
                     sentiment = 0
                 t.append([article['title'], vs['pos'], vs['neu'], vs['neg'], sentiment])
-        print(t)
+
+    # return the data
     return jsonify({"success":True,"tweets":t})
 
 
