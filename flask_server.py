@@ -41,7 +41,7 @@ def search():
             sentiment = -1
         else:
             sentiment = 0
-        t.append([tweet.full_text, vs, sentiment])
+        t.append([tweet.full_text, vs['pos'], vs['neu'], vs['neg'], sentiment])
     return jsonify({"success":True,"tweets":t})
 
 
