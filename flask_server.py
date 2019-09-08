@@ -35,8 +35,8 @@ def search():
     analyzer = SentimentIntensityAnalyzer()
     t = []
     search_tweet = request.form.get("search_query")
-    source = 'news'
-    if source == 'twitter':
+    source = request.form.get("type")
+    if source == 'twitter' or source == 'all':
         tweets = api.search(search_tweet, tweet_mode='extended')
         for tweet in tweets:
             vs = analyzer.polarity_scores(tweet.full_text)
@@ -47,7 +47,7 @@ def search():
             else:
                 sentiment = 0
             t.append([tweet.full_text, vs['pos'], vs['neu'], vs['neg'], sentiment])
-    elif source == 'news':
+    if source == 'news' or source == 'all':
         date_object = datetime.date.today()
         url = ('https://newsapi.org/v2/everything?'
                'q=' + search_tweet +

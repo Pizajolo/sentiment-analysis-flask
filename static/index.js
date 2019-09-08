@@ -1,10 +1,12 @@
 // Table where to put the tweets
 const table = document.getElementById('tweet-table');
 
+// Select Dropdown
+const sel = document.getElementById('dropdown');
 // Chart to show the result
-var ctx = document.getElementById('doughnutChart').getContext('2d');
+let ctx = document.getElementById('doughnutChart').getContext('2d');
 ctx.height = 200;
-var chart = new Chart(ctx, {
+let chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'doughnut',
 
@@ -57,6 +59,7 @@ async function app() {
         // Initialize new request
         const request = new XMLHttpRequest();
         const search_query = document.querySelector('#form-input').value;
+        console.log(search_query);
         request.open('POST', '/search');
 
         // Callback function for when request completes
@@ -100,6 +103,7 @@ async function app() {
         const data = new FormData();
         data.append('search_query', search_query);
 
+        data.append('type', sel.value);
         // Send request
         request.send(data);
         return false;
